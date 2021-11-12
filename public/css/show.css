@@ -1,0 +1,21 @@
+
+.card-body:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: rgb(211, 35, 35);
+}
+
+footer{
+  background-color: rgb(245, 245, 245);
+
+}
+
+.row a {
+  text-decoration: none;
+  color: black;
+}
+
+.container_image {
+max-height: 400px;
+overflow: hidden;
+}

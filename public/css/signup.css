@@ -1,0 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
+.name-list{
+  list-style-type: none;
+}

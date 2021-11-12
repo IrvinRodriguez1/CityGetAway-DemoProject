@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head') %>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="../css/details.css">
+  <title>Details</title>
+</head>
+
+<body>
+  <%- include('partials/nav') %>
+  <div class="main-container">
+
+    <div class="container">
+      <h1 class='text-center'><%= vacationID.city %> in <%= vacationID.state %> </h1>
+      <div class="row g-2">
+
+        <div class="col-sm-12 col-md-6 img-container">
+
+          <img class="" src="<%= vacationID.imageURL.URL %> " alt="" >
+          
+          
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div class="" id='map' ></div>
+
+        </div>
+        
+          
+          
+        
+
+      </div>
+    </div>
+
+    <div class="container pt-5">
+      <a href="http://localhost:3000/vacations/<%= vacationID.id %>/review"><button class="btn review-button"><i class="far fa-star"></i> Write a Review</button></a>
+      <h3 class="pt-4">Reviews</h3>
+      <% for(let i of cityComments) {%>
+      <div class="container review">
+        <div class="row pt-2">
+          <div class="circular-image px-0">
+            <img class='avatar ' src="<%= i.userID.avatar %>" alt="">
+          </div>
+          <div class="col-auto">
+            <b><%= i.userID.firstName %> <%= i.userID.lastName %> </b>
+            <div class="star-container-<%= i.rating %>">
+              <div class="user-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+               </div>
+            </div>
+            
+            
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <p><%= i.comment %></p>
+        </div>
+
+
+      </div>
+      <% } %>
+      
+      <!-- <form action="http://localhost:3000/vacations//<= vacationID.id %>?_method=Delete" method="POST">
+        <button>Delete</button>
+      </form> -->
+    </div>
+
+  </div>
+
+
+  <%- include('partials/footer') %>
+  <script>
+     mapboxgl.accessToken =
+  'pk.eyJ1IjoiaXJ2aW5zMTciLCJhIjoiY2t2b3J4MGRyMGxlejJucXZ2a3p6M2NxeiJ9.TKQibbTv-zrwALpHBxJAIA';
+const map = new mapboxgl.Map({
+  container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v11', // style URL
+  center: [<%= vacationID.geometry.coordinates %>], // starting position [lng, lat]
+  zoom: 9 // starting zoom
+});
+
+// Create a new marker.
+const marker = new mapboxgl.Marker()
+.setLngLat([<%= vacationID.geometry.coordinates %>])
+.addTo(map);
+  </script> 
+ 
+
+</body>
+
+</html>
