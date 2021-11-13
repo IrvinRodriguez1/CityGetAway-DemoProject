@@ -21,6 +21,9 @@ stars.forEach(element =>{
   element.addEventListener('click', event =>{
     permanent = starText(event.path[1].htmlFor)
   })
+  element.addEventListener('touchstart', event =>{
+    permanent = starText(event.path[1].htmlFor)
+  })
   element.addEventListener('mouseover', event =>{
     starComment.innerText= starText(event.path[1].htmlFor);
   })
