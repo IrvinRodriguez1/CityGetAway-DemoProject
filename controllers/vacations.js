@@ -40,7 +40,7 @@ module.exports.createCity = async(req, res, next)=>{
 
  await newVacation.save()
  
-res.redirect(`http://localhost:3000/vacations/${newVacation.id}`)
+res.redirect(`/vacations/${newVacation.id}`)
 
 }
 
@@ -78,12 +78,12 @@ module.exports.createReview = async (req, res, next)=>{
   })
   
   await newComment.save()
-  res.redirect(`http://localhost:3000/vacations/${id}`)
+  res.redirect(`/vacations/${id}`)
 }
 
 module.exports.deleteCity = async (req, res, next)=>{
   const {id} = req.params
   await Vacation.findByIdAndDelete(id)
   await Comment.deleteMany({cityID:id})
- res.redirect('http://localhost:3000/vacations')
+ res.redirect('/vacations')
 }
