@@ -97,7 +97,7 @@ app.get('/search', wrapAsync(async (req,res, next)=>{
    return  res.redirect('/')
   }
   
-   res.redirect(`http://localhost:3000/vacations/${matchFound.id}`)
+   res.redirect(`/vacations/${matchFound.id}`)
   
   res.send('working so far')
   
