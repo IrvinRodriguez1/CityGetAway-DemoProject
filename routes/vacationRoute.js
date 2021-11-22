@@ -5,7 +5,7 @@ const wrapAsync = require('../utility/wrapAsync')
 
 
 const vacationsJs = require('../controllers/vacations')
-const validateNewCity = require('../utility/validateSchemas')
+const cityValidation = require('../utility/validateSchemas')
 const multer  = require('multer')
 const {storage} = require('../cloudinary')
 const upload = multer({storage});

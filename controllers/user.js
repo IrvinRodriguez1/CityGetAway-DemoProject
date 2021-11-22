@@ -7,7 +7,8 @@ module.exports.renderLogin = (req, res, next) => {
 }
 
 module.exports.successLoginRender = (req, res) => {
- 
+
+  req.flash('success', `Welcome Back, ${req.user.firstName}` )
   res.redirect('/')
 }
 

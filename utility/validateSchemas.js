@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 
-const validateNewCity = (req, res, next) =>{
+module.exports.validateNewCity = (req, res, next) =>{
   const schema = Joi.object({
     city:Joi.string().trim().min(3).max(30).required(),
     state: Joi.string().trim().min(3).max(30).required(),
@@ -20,4 +20,11 @@ const validateNewCity = (req, res, next) =>{
     }
 }
 
-module.exports = validateNewCity;
+
+module.exports.validateCity = (req,res,next) =>{
+  console.log(req.body)
+  
+}
+
+
+

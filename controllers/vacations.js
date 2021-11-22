@@ -11,8 +11,10 @@ module.exports.index =async (req,res, next)=>{
 }
 
 module.exports.createCity = async(req, res, next)=>{
-
-  const {city, state} = req.body
+  console.log(req.body)
+  let {city, state} = req.body
+  city = city.trim()
+  state = state.trim()
   const URL = req.file.path
   const {filename} = req.file
   const result = await geocodingClient.forwardGeocode({

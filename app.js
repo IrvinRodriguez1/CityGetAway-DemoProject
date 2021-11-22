@@ -14,16 +14,14 @@ const session = require('express-session')
 const flash = require('connect-flash');
 const vacationRouter = require('./routes/vacationRoute')
 const userRouter = require('./routes/userRoute')
-const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding')
-const geocodingClient = mbxGeocoding({accessToken: process.env.MBX_TOKEN})
 const mongoSanitize = require('express-mongo-sanitize');
 const MongoStore = require('connect-mongo');
 
 
 //const dbURL = process.env.DB_URL
-const dbURL = process.env.DB_URL || 'mongodb://localhost:27017/vacation';
+const dbURL =  process.env.DB_URL || 'mongodb://localhost:27017/vacation';
 
-//'mongodb://localhost:27017/vacation'
+
 //-----conecting to the db
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -86,11 +84,9 @@ app.get('/', wrapAsync(async (req,res, next)=>{
 
 app.get('/search', wrapAsync(async (req,res, next)=>{
   
-  const {city, state} = req.query;
-  const result = await geocodingClient.forwardGeocode({
-    query: `${city},${state}`,
-    limit: 1
-  }).send()
+  let {city, state} = req.query;
+  city = city.trim();
+  state = state.trim();
    const matchFound = await Vacation.findOne({city: city.toUpperCase(), state: state.toUpperCase()})
   if(!matchFound){
     req.flash('error', 'location not found please try a different place')
