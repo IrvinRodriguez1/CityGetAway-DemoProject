@@ -19,7 +19,7 @@ const MongoStore = require('connect-mongo');
 
 
 //const dbURL = process.env.DB_URL
-const dbURL =   'mongodb://localhost:27017/vacation';
+const dbURL =  process.env.DB_URL || 'mongodb://localhost:27017/vacation';
 
 //process.env.DB_URL ||
 //-----conecting to the db
