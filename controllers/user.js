@@ -15,7 +15,7 @@ module.exports.successLoginRender = (req, res) => {
 module.exports.logout = (req, res)=>{
   req.logout();
   req.session.destroy(function(err) {
-    console.log(err)
+    // console.log(err)
  })
   res.redirect('/')
 }

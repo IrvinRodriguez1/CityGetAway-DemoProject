@@ -30,4 +30,5 @@ router.post('/vacations/:id/review',wrapAsync(vacationsJs.createReview))
 //------------delete a city with their comments
 router.delete('/vacations/:id',wrapAsync(vacationsJs.deleteCity))
 
+router.delete('/vacations/:id/:comment',wrapAsync(vacationsJs.deleteComment))
 module.exports = router;

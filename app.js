@@ -19,9 +19,9 @@ const MongoStore = require('connect-mongo');
 
 
 //const dbURL = process.env.DB_URL
-const dbURL =  process.env.DB_URL || 'mongodb://localhost:27017/vacation';
+const dbURL =   'mongodb://localhost:27017/vacation';
 
-
+//process.env.DB_URL ||
 //-----conecting to the db
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -119,7 +119,7 @@ app.use(function (req, res, next) {
 
 // error handling middleware
 app.use(function (err, req, res, next) {
-  console.log(err)
+  // console.log(err)
   req.flash('error', err)
   res.redirect('/')
 })

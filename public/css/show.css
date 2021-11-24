@@ -13,9 +13,13 @@ footer{
 .row a {
   text-decoration: none;
   color: black;
+  display: inline-block;
+  max-width: 434.67px;
+  max-height: 500px;
 }
 
 .container_image {
 max-height: 400px;
+max-width: 400px;
 overflow: hidden;
 }

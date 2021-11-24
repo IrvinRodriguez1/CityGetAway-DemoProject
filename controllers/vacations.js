@@ -11,7 +11,7 @@ module.exports.index =async (req,res, next)=>{
 }
 
 module.exports.createCity = async(req, res, next)=>{
-  console.log(req.body)
+  // console.log(req.body)
   let {city, state} = req.body
   city = city.trim()
   state = state.trim()
@@ -51,9 +51,16 @@ module.exports.cityDetail = async (req, res,next)=>{
   const {id} = req.params
   const vacationID = await Vacation.findById(id)
   const cityComments = await Comment.find({cityID:id}).populate('userID', 'firstName lastName avatar')
+  // console.log(cityComments)
+  let user=''
+  if(req.user){
+    user = req.user.id
+  }else{
+    user = 'none'
+  }
   
   
-  res.render('details', {vacationID, cityComments})
+  res.render('details', {vacationID, cityComments,user})
 }
 
 module.exports.reviewRender = async (req, res, next)=>{
@@ -88,4 +95,12 @@ module.exports.deleteCity = async (req, res, next)=>{
   await Vacation.findByIdAndDelete(id)
   await Comment.deleteMany({cityID:id})
  res.redirect('/vacations')
+}
+
+module.exports.deleteComment = async(req,res,next)=>{
+  const {comment,id} = req.params;
+  // console.log(comment)
+
+  await Comment.findByIdAndDelete(comment)
+  res.redirect(`/vacations/${id}`)
 }

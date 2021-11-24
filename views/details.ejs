@@ -62,15 +62,17 @@
 
         <div class="pt-2">
           <p><%= i.comment %></p>
+          <% if(user===i.userID.id) {%>
+                <form action="/vacations/<%= vacationID.id %>/<%=i.id%>?_method=Delete" method="post">
+                  <button class="delete-comment btn btn-danger">Delete Comment</button>
+                </form> 
+            <% } %> 
         </div>
 
 
       </div>
       <% } %>
       
-      <!-- <form action="http://localhost:3000/vacations//<= vacationID.id %>?_method=Delete" method="POST">
-        <button>Delete</button>
-      </form> -->
     </div>
 
   </div>
