@@ -89,3 +89,8 @@ body {
   color: blue;
 }
 
+@media (min-width: 700px ){
+  .search-inputs{
+    width: 50%;
+  }
+}
